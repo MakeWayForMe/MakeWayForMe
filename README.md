@@ -1,5 +1,8 @@
+# Sora
+
 🖐 Introduce <br>
 프론트엔드 개발자를 목표로 전진하는 현직 퍼블리셔 입니다!
+
 
 ✅ Stack <br>
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat&logo=React&logoColor=white">
