@@ -174,10 +174,7 @@
 	"editor.defaultFormatter": null,
 
 	// 이동 정의 마우스 제스처가 항상 미리 보기 위젯을 열지 여부를 제어합니다.
-	"editor.definitionLinkOpensInPeek": false,
-
-	// 파일을 열 때 파일 콘텐츠를 기반으로 `editor.tabSize#`와 `#editor.insertSpaces`가 자동으로 검색되는지 여부를 제어합니다.
-	"editor.detectIndentation": true,
+    "editor.definitionLinkOpensInPeek": false,
 
 	// 편집기에서 끌어서 놓기로 선택 영역을 이동할 수 있는지 여부를 제어합니다.
 	"editor.dragAndDrop": true,
@@ -581,10 +578,6 @@
 	// 들여쓰기에 공백을 사용할 때 탭 문자의 선택 동작을 에뮬레이트합니다. 선택 영역이 탭 정지에 고정됩니다.
 	"editor.stickyTabStops": false,
 
-	// 이 설정은 더 이상 사용되지 않습니다. 대신 'editor.suggest.showKeywords'또는 'editor.suggest.showSnippets'와 같은 별도의 설정을 사용하세요.
-	//
-	"editor.suggest.filteredTypes": {},
-
 	// 제안 필터링 및 정렬에서 작은 오타를 설명하는지 여부를 제어합니다.
 	"editor.suggest.filterGraceful": true,
 
@@ -733,9 +726,30 @@
 	"editor.tokenColorCustomizations": {
 		"strings": "#FFBB00",
 		"textMateRules": [{
-			"scope": ["variable.other.constant.object.js"],
+			"scope": ["variable.other.constant.object.js", "variable.other.constant.object.ts", "variable.other.constant.object.jsx"],
 			"settings": {"foreground": "#ff2e2e"}
-		}]
+		},
+		{
+			"scope": ["variable.parameter"],
+			"settings": {"fontStyle": ""}
+		},
+		{
+			"scope": ["support.type", "entity.name.type"],
+			"settings": {"foreground": "#ffff00"}
+		},
+		{
+			"scope": ["meta.object-literal.key"],
+			"settings": {
+				"foreground": "#ffffff",
+			}
+		},
+		{
+			"scope": ["meta.definition.method entity.name.function"],
+			"settings": {
+				"foreground": "#82AAFF"
+			}
+		}
+		]
 	},
 
 	// 끝에 자동 삽입된 공백을 제거합니다.
@@ -2228,7 +2242,7 @@
 	//  - prompt: 이름을 바꿀 때마다 프롬프트를 표시합니다.
 	//  - always: 항상 경로를 자동으로 업데이트합니다.
 	//  - never: 경로 이름을 바꾸지 않고 메시지를 표시하지 않습니다.
-	"javascript.updateImportsOnFileMove.enabled": "prompt",
+	"javascript.updateImportsOnFileMove.enabled": "always",
 
 	// JavaScript 유효성 검사를 사용하거나 사용하지 않습니다.
 	"javascript.validate.enable": true,
@@ -3894,7 +3908,8 @@
 		"editor.quickSuggestions": {
 				"strings": true
 		},
-		"editor.suggest.insertMode": "replace"
+		"editor.suggest.insertMode": "replace",
+		"editor.defaultFormatter": "HookyQR.beautify"
 	},
 
 	// [jsonc]에서 재정의할 설정을 구성합니다.
@@ -3920,7 +3935,11 @@
 		"editor.unicodeHighlight.ambiguousCharacters": false,
 		"editor.unicodeHighlight.invisibleCharacters": false,
 		"editor.wordWrap": "on",
-		"editor.quickSuggestions": false
+		"editor.quickSuggestions": {
+			"comments": "off",
+			"strings": "off",
+			"other": "off"
+		}
 	},
 
 	// [plaintext]에서 재정의할 설정을 구성합니다.
@@ -4582,7 +4601,7 @@
 	"liveServer.settings.CustomBrowser": null,
 
 	// To disable information pop up messages.
-	"liveServer.settings.donotShowInfoMsg": false,
+	"liveServer.settings.donotShowInfoMsg": true,
 
 	// To turn off prompt warning message if body or head or other supporting tag is missing in your HTML.
 	"liveServer.settings.donotVerifyTags": false,
@@ -4655,76 +4674,7 @@
 	//css 자동정렬
 	"postcssSorting.config": {
 		"properties-order": [
-			"display",
-			"visibility",
-			"overflow",
-			"float",
-			"clear",
-			"position",
-			"top",
-			"right",
-			"bottom",
-			"left",
-			"z-index",
-			"width",
-			"max-width",
-			"min-width",
-			"height",
-			"max-height",
-			"min-height",
-			"margin",
-			"margin-top",
-			"margin-right",
-			"margin-bottom",
-			"margin-left",
-			"padding",
-			"padding-top",
-			"padding-right",
-			"padding-bottom",
-			"padding-left",
-			"border",
-			"border-color",
-			"border-width",
-			"border-style",
-			"border-radius",
-			"border-top",
-			"border-right",
-			"border-bottom",
-			"border-left",
-			"border-image",
-			"box-sizing",
-			"background",
-			"background-color",
-			"background-image",
-			"background-repeat",
-			"background-position",
-			"background-attachment",
-			"background-size",
-			"background-origin",
-			"background-clip",
-			"font",
-			"color",
-			"font-family",
-			"font-size",
-			"font-weight",
-			"font-style",
-			"font-variant",
-			"line-height",
-			"letter-spacing",
-			"word-spacing",
-			"text-decoration",
-			"text-transform",
-			"text-shadow",
-			"text-align",
-			"vertical-align",
-			"text-indent",
-			"word-wrap",
-			"word-break",
-			"white-space",
-			"text-overflow",
-			"transition",
-			"transform",
-			"animation"
+			"display","flex-direction","justify-content","align-items","flex","flex-grow","flex-shrink","flex-basis","flex-wrap","visibility","overflow","float","clear","position","top","right","bottom","left","z-index","order","width","max-width","min-width","height","max-height","min-height","object-fit","margin","margin-top","margin-right","margin-bottom","margin-left","padding","padding-top","padding-right","padding-bottom","padding-left","border","border-color","border-width","border-style","border-radius","border-top","border-right","border-bottom","border-left","border-image","box-sizing","background","background-color","background-image","background-repeat","background-position","background-attachment","background-size","background-origin","background-clip","font","color","font-family","font-size","font-weight","font-style","font-variant","line-height","letter-spacing","word-spacing","text-decoration","text-transform","text-shadow","text-align","vertical-align","text-indent","word-wrap","word-break","white-space","text-overflow","transform","transition","animation"
 		]
 	},
 	//백업경로
@@ -4734,6 +4684,9 @@
 	"wallpaper-setting.slideInterval": 0.1,
 	"wallpaper-setting.slideEffectFadeIn": false,
 	"workbench.colorTheme": "Material Theme Darker High Contrast",
-
-
+	"sync.removeExtensions": true,
+	"sync.gist": "da68d8b15d672240203b94f342fe1fd3",
+	"sync.quietSync": true,
+	"sync.autoDownload": false,
+	"sync.autoUpload": false,
 }
